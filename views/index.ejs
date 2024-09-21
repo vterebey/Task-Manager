@@ -32,20 +32,20 @@
         <div class="status-filter">
             <form action="/filterTasks" method="GET">
                 <select name="filterStatus">
-                    <option value="">All Statuses</option>
-                    <option value="not started">Not Started</option>
-                    <option value="in progress">In Progress</option>
-                    <option value="done">Done</option>
+                    <option value="" <%= !filterStatus ? 'selected' : '' %>>All Statuses</option>
+                    <option value="not started" <%= filterStatus === 'not started' ? 'selected' : '' %>>Not Started</option>
+                    <option value="in progress" <%= filterStatus === 'in progress' ? 'selected' : '' %>>In Progress</option>
+                    <option value="done" <%= filterStatus === 'done' ? 'selected' : '' %>>Done</option>
                 </select>
                 <input type="submit" value="Filter" />
             </form>
         </div>
-
+        
         <!-- Task List -->
         <div class="tasks-list">
           <% tasks.forEach(function(task) { %>
               <div class="task">
-                  <p class="task-title">ID: <%= task.id %> - <%= task.name %></p>
+                  <p class="task-title">Name: <%= task.name %></p>
                   <p>Status: <%= task.status %></p>
                   <p>Expected Date: <%= task.expectedDate %></p>
                   <% if (task.file) { %>
@@ -54,7 +54,6 @@
               </div>
           <% }); %>
         </div>
-
     </div>
 </body>
 </html>
