@@ -7,10 +7,10 @@ const PORT = 3000;
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'uploads/'); // Specify the directory for uploads
+        cb(null, 'uploads/'); 
     },
     filename: function (req, file, cb) {
-        cb(null, Date.now() + path.extname(file.originalname)); // Use timestamp to avoid name conflicts
+        cb(null, Date.now() + path.extname(file.originalname)); 
     }
 });
 
@@ -22,7 +22,7 @@ app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 
 let tasks = []; 
-let taskId = 0; // Initialize a task ID counter
+let taskId = 0; 
 
 app.get('/', (req, res) => {
     res.render('index', { tasks: tasks });
@@ -32,20 +32,30 @@ app.post('/add-task', upload.single('taskFile'), (req, res) => {
     const taskName = req.body.taskName;
     const taskStatus = req.body.taskStatus;
     const taskExpectedDate = req.body.taskExpectedDate;
-    const taskFile = req.file ? req.file.filename : null; // Note: Handling file upload requires additional setup
+    const taskFile = req.file ? req.file.filename : null; 
 
     if (taskName) {
-        // Create a new task object
         const newTask = {
-            id: ++taskId, // Increment and assign ID
+            id: ++taskId, 
             name: taskName,
             status: taskStatus,
             expectedDate: taskExpectedDate,
             file: taskFile
         };
-        tasks.push(newTask); // Add the new task object to the tasks array
+        tasks.push(newTask);
     }
     res.redirect('/'); 
+});
+
+app.get('/filterTasks', (req,res) => {
+    const filterStatus = req.query.filterStatus;
+    let filteredTasks = tasks;
+
+    if (filterStatus) {
+        filteredTasks = tasks.filter(task => task.status === filterStatus)
+    }
+
+    res.render('index', {tasks: filteredTasks})
 });
 
 app.listen(PORT, () => {

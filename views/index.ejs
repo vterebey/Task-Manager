@@ -8,23 +8,40 @@
 </head>
 <body>
     <div class="container">
+
         <h1>Task Manager</h1>
+
+        <!-- Add a task -->
         <div class="task-input">
             <form action="/add-task" method="POST" enctype="multipart/form-data">
                 <input type="text" name="taskName" placeholder="Enter a new task" required />
                 
                 <select name="taskStatus" required>
-                    <option value="" disabled selected>Select task status</option>
-                    <option value="not started">Not Started</option>
+                    <option value="not started" selected>Not Started</option>
                     <option value="in progress">In Progress</option>
                     <option value="done">Done</option>
                 </select>
                 
-                <input type="date" name="taskExpectedDate" required />
+                <input type="date" id="taskExpectedDate" name="taskExpectedDate" required />
                 <input type="file" name="taskFile" />
                 <input type="submit" id="add-task" value="Add Task" />
             </form>
         </div>
+
+        <!-- Status Filter -->
+        <div class="status-filter">
+            <form action="/filterTasks" method="GET">
+                <select name="filterStatus">
+                    <option value="">All Statuses</option>
+                    <option value="not started">Not Started</option>
+                    <option value="in progress">In Progress</option>
+                    <option value="done">Done</option>
+                </select>
+                <input type="submit" value="Filter" />
+            </form>
+        </div>
+
+        <!-- Task List -->
         <div class="tasks-list">
           <% tasks.forEach(function(task) { %>
               <div class="task">
@@ -36,7 +53,8 @@
                   <% } %>
               </div>
           <% }); %>
-      </div>
+        </div>
+
     </div>
 </body>
 </html>
