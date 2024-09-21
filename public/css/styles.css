@@ -1,0 +1,136 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 2.5em;
+}
+
+.task-input {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between input elements */
+    margin-bottom: 20px;
+}
+
+.task-input input[type="text"],
+.task-input input[type="date"],
+.task-input select {
+    padding: 12px;
+    border: 2px solid #dee1e2;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+.task-input input[type="text"]:focus,
+.task-input input[type="date"]:focus,
+.task-input select:focus {
+    border-color: #9147ff;
+}
+
+#add-task {  
+    font-size: 16px;
+    border-radius: 6px;
+    line-height: 1.5;
+    padding: 8px 12px;
+    transition: box-shadow 100ms ease-in, border 100ms ease-in, background-color 100ms ease-in;
+    border: 2px solid #9147ff;
+    color: white;
+    background: #9147ff;
+    cursor: pointer;
+}
+
+#add-task:hover {
+    background: #7a3dc4; /* Darker shade on hover */
+}
+
+#add-task:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(145, 71, 255, 0.5);
+}
+
+.tasks-list {
+    display: flex;
+    flex-direction: column; /* Stack tasks vertically */
+    gap: 1rem; /* Space between tasks */
+}
+
+.task {
+    background: #ffffff;
+    border: 1px solid #dee1e2;
+    border-radius: 8px;
+    padding: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.task:hover {
+    background-color: #f0f8ff; /* Light blue on hover */
+}
+
+.task-title {
+    font-weight: bold;
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.task-status,
+.task-date {
+    margin: 5px 0;
+    color: #666;
+}
+
+form {
+    display: flex;
+    flex-direction: column; /* Stack form elements */
+    gap: 10px; /* Space between form elements */
+}
+
+form input[type="file"] {
+    margin-top: 10px;
+}
+
+form button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+form button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+form button:active {
+    transform: scale(0.95); /* Slightly shrink on click */
+}
+
+@media (max-width: 600px) {
+    .task-input {
+        flex-direction: column; /* Stack inputs vertically on small screens */
+    }
+    
+    .task-input input[type="text"],
+    .task-input input[type="date"],
+    .task-input select {
+        width: 100%; /* Full width on small screens */
+    }
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/styles.css" type="text/css" />
+    <title>Task Manager</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Task Manager</h1>
+        <div class="task-input">
+            <form action="/add-task" method="POST" enctype="multipart/form-data">
+                <input type="text" name="taskName" placeholder="Enter a new task" required />
+                
+                <select name="taskStatus" required>
+                    <option value="" disabled selected>Select task status</option>
+                    <option value="not started">Not Started</option>
+                    <option value="in progress">In Progress</option>
+                    <option value="done">Done</option>
+                </select>
+                
+                <input type="date" name="taskExpectedDate" required />
+                <input type="file" name="taskFile" />
+                <input type="submit" id="add-task" value="Add Task" />
+            </form>
+        </div>
+        <div class="tasks-list">
+          <% tasks.forEach(function(task) { %>
+              <div class="task">
+                  <p class="task-title">ID: <%= task.id %> - <%= task.name %></p>
+                  <p>Status: <%= task.status %></p>
+                  <p>Expected Date: <%= task.expectedDate %></p>
+                  <% if (task.file) { %>
+                      <p>File: <a href="/uploads/<%= task.file %>"><%= task.file %></a></p>
+                  <% } %>
+              </div>
+          <% }); %>
+      </div>
+    </div>
+</body>
+</html>
