@@ -25,15 +25,14 @@ let tasks = [];
 let taskId = 0; 
 
 app.get('/', (req, res) => {
-    const filterStatus = req.query.filterStatus || ''; // Ensure it's defined
-    let filteredTasks = tasks; // Default to all tasks
+    const filterStatus = req.query.filterStatus && ''; 
+    let filteredTasks = tasks; 
 
-    // If a filter is set, filter the tasks
     if (filterStatus) {
         filteredTasks = tasks.filter(task => task.status === filterStatus);
     }
 
-    res.render('index', { tasks: filteredTasks, filterStatus: filterStatus }); // Pass filterStatus to EJS
+    res.render('index', { tasks: filteredTasks, filterStatus: filterStatus }); 
 });
 
 app.post('/add-task', upload.single('taskFile'), (req, res) => {
@@ -56,8 +55,6 @@ app.post('/add-task', upload.single('taskFile'), (req, res) => {
 });
 
 app.get('/filterTasks', (req, res) => {
-    // This could be the same as the '/' route if you're just filtering
-    // or you can handle it differently based on your needs.
     const filterStatus = req.query.filterStatus || '';
     let filteredTasks = tasks;
 

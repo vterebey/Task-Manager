@@ -22,8 +22,11 @@
                     <option value="done">Done</option>
                 </select>
                 
-                <input type="date" id="taskExpectedDate" name="taskExpectedDate" required />
-                <input type="file" name="taskFile" />
+                <input type="date" id="taskExpectedDate" name="taskExpectedDate" max="2100-12-31" min="1970-01" required />
+                <label class="input-file">
+                    <input type="file" name="taskFile">		
+                    <span>Выберите файл</span>
+              </label>
                 <input type="submit" id="add-task" value="Add Task" />
             </form>
         </div>
@@ -37,7 +40,7 @@
                     <option value="in progress" <%= filterStatus === 'in progress' ? 'selected' : '' %>>In Progress</option>
                     <option value="done" <%= filterStatus === 'done' ? 'selected' : '' %>>Done</option>
                 </select>
-                <input type="submit" value="Filter" />
+                <input type="submit" id="filter-task" value="Filter" />
             </form>
         </div>
         
