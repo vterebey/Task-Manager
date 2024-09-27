@@ -1,0 +1,157 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 2.5em;
+}
+
+.task-input {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+    margin-bottom: 20px;
+}
+
+.task-input input[type="text"],
+.task-input input[type="date"],
+.task-input select,
+.status-filter select {
+    padding: 12px;
+    border: 2px solid #dee1e2;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+.task-input input[type="text"]:focus,
+.task-input input[type="date"]:focus,
+.task-input select:focus {
+    border-color: #9147ff;
+}
+
+button, #add-task, #filter-task {
+    font-size: 16px;
+    border-radius: 4px;
+    line-height: 1.5;
+    padding: 12px; 
+    border: 2px solid #9147ff;
+    color: white;
+    background: #9147ff;
+    cursor: pointer;
+    transition: box-shadow 100ms ease-in, border 100ms ease-in, background-color 100ms ease-in;
+}
+
+button:hover, #add-task:hover, #filter-task:hover {
+    background: #7a3dc4; 
+}
+
+button:focus, #add-task:focus, #filter-task:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(145, 71, 255, 0.5);
+}
+
+.input-file {
+    position: relative;
+    display: inline-block;
+    margin: 10px 0;
+}
+
+.input-file span {
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 12px; 
+    border: 2px solid #9147ff;
+    color: white;
+    background: #9147ff;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.input-file span:hover {
+    background: #7a3dc4; 
+}
+
+.input-file input[type=file] {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    display: block;
+    width: 0;
+    height: 0;
+}
+
+.input-file input[type=file]:disabled + span {
+    background-color: #eee;
+}
+
+.status-filter {
+    margin-bottom: 20px;
+}
+
+.tasks-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; 
+}
+
+.task {
+    background: #ffffff;
+    border: 1px solid #dee1e2;
+    border-radius: 8px;
+    padding: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.task:hover {
+    background-color: #f0f8ff;
+}
+
+.task-title {
+    font-weight: bold;
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.task-status,
+.task-date {
+    margin: 5px 0;
+    color: #666;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+}
+
+form input[type="file"] {
+    margin-top: 10px;
+}
+
+@media (max-width: 600px) {
+    .task-input {
+        flex-direction: column; 
+    }
+    
+    .task-input input[type="text"],
+    .task-input input[type="date"],
+    .task-input select {
+        width: 100%; 
+    }
+}
