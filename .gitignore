@@ -1,4 +1,4 @@
-/node_modules
-package-lock.json
-package.json
+.vscode
+client/node_modules
 uploads
+server/node_modules

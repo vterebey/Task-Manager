@@ -35,7 +35,7 @@ app.get('/', (req, res) => {
     res.render('index', { tasks: filteredTasks, filterStatus: filterStatus }); 
 });
 
-app.post('/add-task', upload.single('taskFile'), (req, res) => {
+app.post('/task', upload.single('taskFile'), (req, res) => {
     const taskName = req.body.taskName;
     const taskStatus = req.body.taskStatus;
     const taskExpectedDate = req.body.taskExpectedDate;
@@ -54,7 +54,7 @@ app.post('/add-task', upload.single('taskFile'), (req, res) => {
     res.redirect('/'); 
 });
 
-app.get('/filterTasks', (req, res) => {
+app.get('/task', (req, res) => {
     const filterStatus = req.query.filterStatus || '';
     let filteredTasks = tasks;
 
